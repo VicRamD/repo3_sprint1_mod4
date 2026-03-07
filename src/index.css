@@ -1,4 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
+
+/*body*/
+body {
+    background-color: oklch(88.2% 0.059 254.128);
+}
+
+.comic-relief {
+    font-family: "Comic Relief", system-ui;
+}
+
+.roboto {
+    font-family: "Roboto", sans-serif;
+}
 
 /*----- animaciones -------*/
 
