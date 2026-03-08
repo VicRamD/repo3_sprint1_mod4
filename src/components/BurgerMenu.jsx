@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { navbarLinks } from "../constants/navbarLinks";
 
-const BurgerMenu = () => {
+const BurgerMenu = ({isLogged}) => {
 
     //El estado para saber si menu hamburguesa para moviles está abierto o no
     const [isOpen, setIsOpen] = useState(false);
@@ -30,8 +30,8 @@ const BurgerMenu = () => {
     }
 
     return (
-        <div className="relative">
-            <div className='h-full w-16 relative z-50 flex flex-col items-start justify-between lg:invisible' 
+        <div className="relative mx-2">
+            <div className='h-full w-16 relative z-50 flex flex-col items-start justify-between lg:hidden' 
             onClick={doBothChangesFunction}>
                 <div className={`w-16 h-2 bg-cyan-400 rounded-full my-[0.3em] mb-1 mx-0 box-border ${burgerClass}`}></div>
                 <div className={`w-16 h-2 bg-cyan-400 rounded-full my-[0.3em] mb-1 mx-0 box-border ${burgerClass}`}></div>
@@ -44,12 +44,19 @@ const BurgerMenu = () => {
                 <div className="flex justify-end p-4">
 
                 </div>
-                <ul className="text-white flex flex-col items-center justify-center space-y-6 mt-10">
+                <ul className="text-white flex flex-col items-center justify-center space-y-6 mt-6">
                     {navbarLinks.map(link => <li key={link.id} className="text-lg text-white cursor-pointer pb-1.5 transition hover:font-bold">
                                                     <a src={link.link} >{link.title}</a>
                                                 </li>    )
                     }  
                 </ul>
+                <div className="flex flex-col items-center justify-center mt-6">
+                    <div className='bg-black text-white mx-2 inline-flex rounded-[100px] items-center justify-center cursor-pointer 
+                    text-base text-center min-h-10 overflow-hidden px-5 hover:bg-white hover:text-black'>
+                    {isLogged ? <a href="/"><i className="bi bi-person-square"></i> Nombre </a> : <a href="/"><i className="bi bi-person-add"></i> Login</a>}
+                </div>
+                </div>
+                
             </div>
             {isOpen && (
                 <div className="fixed inset-0 bg-black/50 lg:hidden z-40" onClick={doBothChangesFunction}></div>
