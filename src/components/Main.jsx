@@ -1,3 +1,5 @@
+import { motion } from "motion/react"
+
 import libroTematicas from '../assets/libroTematicas2.png';
 import { publishersImg } from '../constants/publishersImg';
 
@@ -19,7 +21,10 @@ const Main = () => {
 
       </div>
       <div className="w-full flex justify-center lg:w-1/2">
-        <img src={libroTematicas} alt="imagen de un libro con elementos" />
+        <motion.img drag whileDrag={{scale: 0.7}} dragConstraints={{top: -50, left:-50, right:50, bottom: 50}} dragMomentum={false} 
+        src={libroTematicas} alt="imagen de un libro con elementos"/>
+        {//<img src={libroTematicas} alt="imagen de un libro con elementos" />
+        }
       </div>
       <div className='w-full bg-white flex flex-wrap justify-center'>
         {publishersImg.map(item => <img key={item.id} alt={item.alt} src={item.link} style={{width: "200px", height: "100px"}}/>)}
