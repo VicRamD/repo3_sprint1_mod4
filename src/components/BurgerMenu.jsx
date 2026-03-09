@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { navbarLinks } from "../constants/navbarLinks";
 
-const BurgerMenu = ({isLogged}) => {
+const BurgerMenu = ({isLogged, logInAndLogOut}) => {
 
     //El estado para saber si menu hamburguesa para moviles está abierto o no
     const [isOpen, setIsOpen] = useState(false);
@@ -51,10 +51,19 @@ const BurgerMenu = ({isLogged}) => {
                     }  
                 </ul>
                 <div className="flex flex-col items-center justify-center mt-6">
-                    <div className='bg-black text-white mx-2 inline-flex rounded-[100px] items-center justify-center cursor-pointer 
-                    text-base text-center min-h-10 overflow-hidden px-5 hover:bg-white hover:text-black'>
-                    {isLogged ? <a href="/"><i className="bi bi-person-square"></i> Nombre </a> : <a href="/"><i className="bi bi-person-add"></i> Login</a>}
-                </div>
+                    {//renderización condicional
+                    }
+                    {isLogged ? <div className={`bg-red-700 text-white mx-2 inline-flex rounded-[100px] items-center justify-center cursor-pointer 
+                    text-base text-center min-h-10 overflow-hidden px-5 hover:bg-white hover:text-red-700`} onClick={logInAndLogOut}>
+                        {/*<a href="/"><i className="bi bi-person-square"></i> Cerrar Sesión </a>*/}
+                        <i className="bi bi-person-square"></i><span className='mx-1'>Cerrar Sesión</span> 
+                    </div> : 
+                    <div className={`bg-black text-white mx-2 inline-flex rounded-[100px] items-center justify-center cursor-pointer 
+                    text-base text-center min-h-10 overflow-hidden px-5 hover:bg-white hover:text-black`} onClick={logInAndLogOut}>
+                        {/*<a href="/"><i className="bi bi-person-add"></i> Login</a> */}
+                        <i className="bi bi-person-add"></i><span className='mx-1'>Login</span>
+                    </div>
+                    }
                 </div>
                 
             </div>
